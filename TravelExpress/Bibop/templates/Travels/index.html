@@ -7,6 +7,7 @@
   <li>
     <h2>{{p.name}}</h2>
     <p>Цена корабля: {{p.Price}} темной материи</p>
+    <p class="link-read-post"><a href="{{ p.get_absolute_url }}">Смотреть космалёт</a></p>
     <hr>
   </li>
   {% endfor %}

@@ -16,16 +16,15 @@ Including another URLconf
 """
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
-from Bibop.views import about, arcadia
+
 from TravelExpress import settings
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', arcadia),
-    path('about/', about)
+    path('', include('Bibop.urls'))
 ]
 
 if settings.DEBUG:
