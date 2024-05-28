@@ -9,10 +9,10 @@ class TravelerAdmin(admin.ModelAdmin):
   
 
 class ShipAdmin(admin.ModelAdmin):
-  list_display = ('id', 'name', 'Price')
+  list_display = ('id', 'name', 'price')
   list_display_links = ('id', 'name')
-  search_fields = ('name', 'Price')
-  list_editable = ('Price',)
+  search_fields = ('name', 'price')
+  list_editable = ('price',)
 
 class PortAdmin(admin.ModelAdmin):
   list_display = ('id', 'name')

@@ -1,17 +1,23 @@
 {% extends "Travels/base.html"  %}
-{% load Bibop_tags %}
 
 {% block content %}
-<h1>{{ title }}</h1>
-{% getship as ships%}
-<ul>
-  {% for p in ships %}
-  <li>
-    <h2>{{p.name}}</h2>
-    <p>Цена корабля: {{p.Price}} темной материи</p>
-    <p class="link-read-post"><a href="{{ p.get_absolute_url }}">Смотреть космалёт</a></p>
-    <hr>
-  </li>
-  {% endfor %}
-</ul>  
+<ul class="list-articles">
+	{% for p in posts %}
+			<li><div class="article-panel">
+	<p class="first">Порт: {{p.port}}</p>
+</div>
+
+{% if p.photo %}
+	<p><img class="img-article-left thumb" src="{{p.photo.url}}"></p>
+{% endif %}
+
+				<h2>{{p.name}}</h2>
+	{% autoescape on %}
+	{{p.price|linebreaks|truncatewords:50}}
+	{% endautoescape %}
+			<div class="clear"></div>
+			<p class="link-read-post"><a href="{{ p.get_absolute_url }}">Читать пост</a></p>
+			</li>
+	{% endfor %}
+</ul>
 {% endblock %}

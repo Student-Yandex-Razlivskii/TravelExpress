@@ -3,10 +3,11 @@ from django.urls import reverse
 
 class Ships(models.Model):
   name = models.CharField(max_length=255, verbose_name="Имя корабля")
-  Price = models.IntegerField(verbose_name="Цена")
-  departure_port_id = models.ForeignKey('Ports', on_delete=models.PROTECT, verbose_name="Порт")
-  captain_id = models.ForeignKey('Captains', on_delete=models.PROTECT, verbose_name="Капитан")
-  traveler_id = models.ForeignKey('Travelers', on_delete=models.PROTECT, verbose_name="Путешественник")
+  price = models.IntegerField(verbose_name="Цена")
+  photo = models.ImageField(upload_to="photos/%Y/%m/%d/", null=True, verbose_name="Фото")
+  port = models.ForeignKey('Ports', on_delete=models.PROTECT, verbose_name="Порт")
+  captain = models.ForeignKey('Captains', on_delete=models.PROTECT, verbose_name="Капитан")
+  traveler = models.ForeignKey('Travelers', on_delete=models.PROTECT, verbose_name="Путешественник")
   
   def __str__(self):
     return self.name
@@ -17,10 +18,10 @@ class Ships(models.Model):
   class Meta:
     verbose_name = 'Известные корабли'
     verbose_name_plural = 'Известные корабли'
-    ordering = ['Price','name']
+    ordering = ['price','name']
 
 class Ports(models.Model):
-  name = models.CharField(max_length=255, verbose_name="Имя порта")
+  name = models.CharField(max_length=255, db_index=True, verbose_name="Имя порта")
   
   def __str__(self):
     return self.name
@@ -31,7 +32,7 @@ class Ports(models.Model):
   class Meta:
     verbose_name = 'Известные порты'
     verbose_name_plural = 'Известные порты'
-    ordering = ['name']
+    ordering = ['id']
   
 class Captains(models.Model):
   name = models.CharField(max_length=255, verbose_name="Имя капитана")
@@ -60,6 +61,3 @@ class Travelers(models.Model):
     verbose_name = 'Известные путешественники'
     verbose_name_plural = 'Известные путешественники'
     ordering = ['name']
-
-
-
