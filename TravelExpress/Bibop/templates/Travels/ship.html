@@ -1,0 +1,11 @@
+{% extends 'Travels/base.html' %}
+
+{% block content %}
+<h1>{{ship.name}}</h1>
+
+{% if ship.photo %}
+<p><img class="img-article-left" src="{{ship.photo.url}}"></p>
+{% endif %}
+
+
+{% endblock %}

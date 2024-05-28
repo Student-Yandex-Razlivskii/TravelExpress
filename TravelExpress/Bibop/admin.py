@@ -9,15 +9,17 @@ class TravelerAdmin(admin.ModelAdmin):
   
 
 class ShipAdmin(admin.ModelAdmin):
-  list_display = ('id', 'name', 'price')
+  list_display = ('id', 'name', 'price', 'photo')
   list_display_links = ('id', 'name')
   search_fields = ('name', 'price')
   list_editable = ('price',)
+  prepopulated_fields = {"slug": ("name",)}
 
 class PortAdmin(admin.ModelAdmin):
   list_display = ('id', 'name')
   list_display_links = ('id', 'name')
   search_fields = ('name',)
+  prepopulated_fields = {"slug": ("name",)}
 
 class CaptainAdmin(admin.ModelAdmin):
   list_display = ('id', 'name')

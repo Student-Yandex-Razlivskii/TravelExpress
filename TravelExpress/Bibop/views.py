@@ -32,13 +32,22 @@ def about(request):
   
 
 def add(request):
-  return HttpResponse("Добавление корабля")
+  return render(request, 'Travels/addpage.html', {'menu': menu, 'title': 'Добавление корабля'})
 
 def login(request):
   return HttpResponse("Авторизация")
 
 def show_ship(request, ship_id):
   ship = get_object_or_404(Ships, pk=ship_id)
+  
+  context = {
+    'ship': ship,
+    'menu': menu,
+    'title': ship.name,
+    'port_selected': ship.port_id,
+  }
+  
+  return render(request, 'Travels/ship.html', context=context)
 
 def show_traveler(request, traveler_id):
   return HttpResponse(f"Отображение корабля с id = {traveler_id}")

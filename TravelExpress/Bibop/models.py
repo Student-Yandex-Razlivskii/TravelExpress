@@ -4,7 +4,7 @@ from django.urls import reverse
 class Ships(models.Model):
   name = models.CharField(max_length=255, verbose_name="Имя корабля")
   price = models.IntegerField(verbose_name="Цена")
-  photo = models.ImageField(upload_to="photos/%Y/%m/%d/", null=True, verbose_name="Фото")
+  photo = models.ImageField(upload_to="photos/%Y/%m/%d/", verbose_name="Фото")
   port = models.ForeignKey('Ports', on_delete=models.PROTECT, verbose_name="Порт")
   captain = models.ForeignKey('Captains', on_delete=models.PROTECT, verbose_name="Капитан")
   traveler = models.ForeignKey('Travelers', on_delete=models.PROTECT, verbose_name="Путешественник")
