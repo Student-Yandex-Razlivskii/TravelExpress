@@ -8,9 +8,9 @@ menu = [{'title': "О сайте", 'url_name': 'about'},
         ]
 
 def index(request): 
-  posts = Ships.objects.all()
+  
   context = {
-    'posts': posts,
+    
     'menu': menu,
     'title': 'Главная страница'
   }
@@ -28,3 +28,12 @@ def login(request):
 
 def show_ship(request, ship_id):
   return HttpResponse(f"Отображение корабля с id = {ship_id}")
+
+def show_traveler(request, traveler_id):
+  return HttpResponse(f"Отображение корабля с id = {traveler_id}")
+
+def show_port(request, port_id):
+  return HttpResponse(f"Отображение корабля с id = {port_id}")
+
+def show_сaptain(request, сaptain_id):
+  return HttpResponse(f"Отображение корабля с id = {сaptain_id}")
